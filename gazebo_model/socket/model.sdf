@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="socket">
+    <pose>0 0 0 1.57 0 3.14</pose>
+    <link name="socket">
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0 -0.041907 -0.028887 0 -0 0</pose>
+        <mass>0.1684</mass>
+        <inertia>
+          <ixx>0.00062222</ixx>
+          <ixy>9.8906e-10</ixy>
+          <ixz>2.4666e-10</ixz>
+          <iyy>0.00021389</iyy>
+          <iyz>9.0339e-06</iyz>
+          <izz>0.00061855</izz>
+        </inertia>
+      </inertial>
+      <collision name="socket_collision">
+        <pose frame=''>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://socket/meshes/peng.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="socket_visual">
+        <pose frame=''>0 0 0 1.5708 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://socket/meshes/peng.STL</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>

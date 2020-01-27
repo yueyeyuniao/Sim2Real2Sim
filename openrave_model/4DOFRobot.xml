@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Robot name="cable">
+
+    <KinBody>
+        <Mass type="mimicgeom"><density>100000</density></Mass>
+        <Body name="Base" type="dynamic">
+            <Translation>0.0  0.0  0.0</Translation>
+            <Geom type="cylinder">
+                <radius>0.001</radius>
+                <height>0.001</height>
+                <ambientColor>1. 0. 0.</ambientColor>
+                <diffuseColor>1. 0. 0.</diffuseColor>
+            </Geom>
+        </Body>
+        <Body name="Arm0" type="dynamic">
+            <offsetfrom>Base</offsetfrom>
+            <!-- translation and rotation  will be relative to Base -->
+            <Translation>0 0 0</Translation>
+            <Geom type="box">
+                <Translation>0.025 0 0</Translation>
+                <Extents>0.025 0.001 0.001</Extents>
+                <ambientColor>1. 0. 0.</ambientColor>
+                <diffuseColor>1. 0. 0.</diffuseColor>
+            </Geom>
+            <mass type="custom">
+      		<total>0.1</total>
+		<com>0.025 0 0</com>
+    	    </mass>
+        </Body>
+        <Joint circular="true" name="Joint0" type="hinge">
+            <Body>Base</Body>
+            <Body>Arm0</Body>
+            <offsetfrom>Arm0</offsetfrom>
+            <weight>0.0</weight>
+            <axis>0 0 1</axis>
+            <maxvel>3.42</maxvel>
+            <resolution>1</resolution>
+        </Joint>
+        <Body name="Arm1" type="dynamic">
+            <offsetfrom>Arm0</offsetfrom>
+            <Translation>0.05 0 0</Translation>
+            <Geom type="box">
+                <Translation>0.025 0 0</Translation>
+                <Extents>0.025 0.001 0.001</Extents>
+                <ambientColor>0. 0. 1.</ambientColor>
+                <diffuseColor>0. 0. 1.</diffuseColor>
+            </Geom>
+            <mass type="custom">
+      		<total>0.1</total>
+		<com>0.075 0 0</com>
+    	    </mass>
+        </Body>
+        <Joint circular="true" name="Joint1" type="hinge">
+            <Body>Arm0</Body>
+            <Body>Arm1</Body>
+            <offsetfrom>Arm1</offsetfrom>
+            <weight>0.0</weight>
+            <axis>0 0 1</axis>
+            <maxvel>5.42</maxvel>
+            <resolution>1</resolution>
+        </Joint>
+	<Body name="Arm2" type="dynamic">
+            <offsetfrom>Arm1</offsetfrom>
+            <Translation>0.05 0 0</Translation>
+            <Geom type="box">
+                <Translation>0.025 0 0</Translation>
+                <Extents>0.025 0.001 0.001</Extents>
+                <ambientColor>0. 1. 0.</ambientColor>
+                <diffuseColor>0. 1. 0.</diffuseColor>
+            </Geom>
+            <mass type="custom">
+      		<total>0.1</total>
+		<com>0.125 0 0</com>
+    	    </mass>
+        </Body>
+	<Joint circular="true" name="Joint2" type="hinge">
+            <Body>Arm1</Body>
+            <Body>Arm2</Body>
+            <offsetfrom>Arm2</offsetfrom>
+            <weight>0.0</weight>
+            <axis>0 0 1</axis>
+            <maxvel>5.42</maxvel>
+            <resolution>1</resolution>
+        </Joint>
+	<Body name="Arm3" type="dynamic">
+            <offsetfrom>Arm2</offsetfrom>
+            <Translation>0.05 0 0</Translation>
+            <Geom type="box">
+                <Translation>0.05 0 0</Translation>
+                <Extents>0.05 0.001 0.001</Extents>
+                <ambientColor>1. 0. 0.</ambientColor>
+                <diffuseColor>1. 0. 0.</diffuseColor>
+            </Geom>
+            <mass type="custom">
+      		<total>0.2</total>
+		<com>0.175 0 0</com>
+    	    </mass>
+        </Body>
+	<Joint circular="true" name="Joint3" type="hinge">
+            <Body>Arm2</Body>
+            <Body>Arm3</Body>
+            <offsetfrom>Arm3</offsetfrom>
+            <weight>0.0</weight>
+            <axis>0 0 1</axis>
+            <maxvel>5.42</maxvel>
+            <resolution>1</resolution>
+        </Joint>
+    </KinBody>
+    <Manipulator name="cable_manip">
+    	<base>Base</base>
+    	<effector>Arm3</effector>
+	<Translation>0.10 0 0</Translation>
+    </Manipulator>
+</Robot>

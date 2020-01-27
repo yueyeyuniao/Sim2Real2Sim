@@ -1,0 +1,73 @@
+<launch>
+
+  <!-- these are the arguments you can pass this launch file, for example paused:=true -->  
+  <arg name="kinova_robotType" default="j2n6s300"/>
+  <arg name="kinova_robotName" default="$(arg kinova_robotType)"/>
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="use_trajectory_controller" default="true"/>
+  <arg name="is7dof" default="false"/>
+  <!-- Robot pose -->
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="0"/>
+  <arg name="roll" default="0"/>
+  <arg name="pitch" default="0"/>
+  <arg name="yaw" default="0"/>
+
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find kinova_gazebo)/worlds/cable_and_kinect.world"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description"
+    command="$(find xacro)/xacro --inorder '$(find kinova_description)/urdf/$(arg kinova_robotType)_standalone.xacro'" />
+
+  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+    args="-urdf -model $(arg kinova_robotName) -param robot_description"/>
+
+  <!-- ros_control launch file -->
+  <include file="$(find kinova_control)/launch/kinova_control.launch">
+    <arg name="kinova_robotName" value="$(arg kinova_robotName)"/>
+    <arg name="kinova_robotType" value="$(arg kinova_robotType)"/>
+    <arg name="use_trajectory_controller" value="$(arg use_trajectory_controller)"/>
+    <arg name="is7dof" value="$(arg is7dof)"/>
+  </include>
+
+  <!-- rqt launch file -->
+  <!--  
+  <include file="$(find kinova_control)/launch/$kinova_rqt.launch">
+    <arg name="kinova_robotType" value="$(arg kinova_robotName)"/>
+  </include> 
+  -->
+
+  <!-- Launch kinect2 and set the TF -->
+  <!-- <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch" />  -->
+	
+	<!-- use reference frame to match with the real world robot -->
+	<node pkg="tf" type="static_transform_publisher" 
+        	name="map_link_to_camera" 
+        	args="1.2 -0.6 0.486 1.57 0 -1.57 /root /camera_link 100" />
+
+	<!-- tf publisher for the task-->
+ 	<node pkg="tf" type="static_transform_publisher" 
+        	name="base_link_to_endeffector_default" 
+        	args="0.0 0.0 0.0 0.0 0.0 3.14 /root /endeffector_default 100" />
+	
+	<node pkg="tf" type="static_transform_publisher" 
+        	name="base_link_to_preinsert" 
+        	args="0.17 -0.56 0.6 0.0 0.0 3.14 /root /preinsert 100" />	
+
+
+</launch>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="peng">
+  <link
+    name="peng">
+    <inertial>
+      <origin
+        xyz="4.7023E-08 -0.041907 -0.028887"
+        rpy="0 0 0" />
+      <mass
+        value="0.1684" />
+      <inertia
+        ixx="0.00062222"
+        ixy="9.8906E-10"
+        ixz="2.4666E-10"
+        iyy="0.00021389"
+        iyz="9.03390000000002E-06"
+        izz="0.00061855" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="package://peng/meshes/peng.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+        <texture
+          filename="package://peng/textures/" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="package://peng/meshes/peng.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>
