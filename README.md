@@ -3,9 +3,9 @@
 
 ### 1. System requirement and installation
 
-Ubuntu 16.04 + [ROS Kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu)
-[Kinova Jaco v2](https://github.com/Kinovarobotics/kinova-ros)
-[Openrave](https://github.com/yueyeyuniao/openrave)
+##### Ubuntu 16.04 + [ROS Kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu)
+##### [Kinova Jaco v2](https://github.com/Kinovarobotics/kinova-ros)
+##### [Openrave](https://github.com/yueyeyuniao/openrave)
 
 ### 2. Steps to run the task in simulation
 
