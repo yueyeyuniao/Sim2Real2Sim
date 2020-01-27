@@ -33,6 +33,11 @@ rosrun research_s2r task_sim
 ##### (2)Identifying joint stiffness and damping parameters, and these parameters can be used in the simulation
 Openrave is used to help with modeling and calculation. The Openrave model is under ‘openrave_model’ folder. The source code for identifying joint stiffness and damping parameters is located at ‘research_r2s’ folder.
 
+##### Simulation video without correct joint stiffness and damping parameters
+![alt-text](https://github.com/yueyeyuniao/Sim2Real2Sim/blob/master/gifs/PlugTask_noDangle.gif)
+##### Simulation video with identified joint stiffness and damping parameters
+![alt-text](https://github.com/yueyeyuniao/Sim2Real2Sim/blob/master/gifs/PlugTask_sim2real2sim.gif)
+
 ### 5. Copyrights
 Sim2Real2Sim was developed at the [RIVeR Lab, Northeastern University](http://robot.neu.edu/).
 
