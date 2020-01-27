@@ -35,9 +35,10 @@ Openrave is used to help with modeling and calculation. The Openrave model is un
 
 ##### Simulation video without correct joint stiffness and damping parameters
 ![alt-text](https://github.com/yueyeyuniao/Sim2Real2Sim/blob/master/gifs/PlugTask_noDangle.gif)
+(No deformation after the cable is pulled out)
 ##### Simulation video with identified joint stiffness and damping parameters
 ![alt-text](https://github.com/yueyeyuniao/Sim2Real2Sim/blob/master/gifs/PlugTask_sim2real2sim.gif)
-
+(Deformation after the cable is pulled out)
 ### 5. Copyrights
 Sim2Real2Sim was developed at the [RIVeR Lab, Northeastern University](http://robot.neu.edu/).
 
