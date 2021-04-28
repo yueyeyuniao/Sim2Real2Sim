@@ -1,5 +1,5 @@
 # Sim2Real2Sim: Bridging the Gap Between Simulation and Real-World in Flexible Object Manipulation
-
+## 0. [Paper link](https://arxiv.org/pdf/2002.02538.pdf)
 
 ## 1. System requirement and installation
 
